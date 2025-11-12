@@ -1,3 +1,4 @@
+package com.tartarugacometa.model;
 public class Endereco {
 
 	private String rua;
