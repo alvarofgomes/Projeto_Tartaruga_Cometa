@@ -3,6 +3,9 @@ public class Entrega {
 
 	private String status;
 
+	public Entrega() {
+	}
+	
 	public String getStatus() {
 		return status;
 	}

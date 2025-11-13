@@ -4,6 +4,14 @@ public class Cliente {
 	private String nome;
 	private String cpfCnpj;
 	
+	public Cliente(String nome, String cpfCnpj) {
+		this.nome = nome;
+		this.cpfCnpj = cpfCnpj;
+	}
+
+	public Cliente() {
+	}
+	
 	public String getNome() {
 		return nome;
 	}
