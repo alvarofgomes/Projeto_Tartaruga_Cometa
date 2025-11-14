@@ -7,13 +7,15 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		ExibirInformacoesClientesController eic = new ExibirInformacoesClientesController();
-		ExibirInformacoesEnderecoController  eie = new ExibirInformacoesEnderecoController();
-		ExibirInformacoesProdutosController eip = new ExibirInformacoesProdutosController();
+		ClienteController cc = new ClienteController();
+		EnderecoController ec = new EnderecoController();
+		ProdutoController pc = new ProdutoController();
 		
-		eic.exibirInfo();
-		eie.exibirInfo();
-		eip.exibirInfo();
+		cc.cadastrarCliente();
+		cc.exibirInfo();
+		
+		ec.exibirInfo();
+		pc.exibirInfo();
 		
 	}
 

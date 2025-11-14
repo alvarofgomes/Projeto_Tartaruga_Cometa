@@ -11,3 +11,6 @@
 /ExibirInformacoesProdutosController.class
 /AtualizarDadosDoClienteController.class
 /AtualizarDadosDoEnderecoController.class
+/ProdutoController.class
+/EnderecoController.class
+/ClienteController.class

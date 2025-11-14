@@ -1,10 +1,24 @@
 package com.tartarugacometa.controller;
 
+import com.tartarugacometa.model.Entrega;
 import com.tartarugacometa.model.Produto;
 
-public class CalcularFreteProdutoController {
+public class ProdutoController {
 
-	//calculo para peso cubico para descobrir valor do frete, primeiro pega o volume e depois 
+	Produto produto = new Produto("Pneu de caminhão", 20.0);
+	Entrega entrega = new Entrega(20.0);
+	
+	public void exibirInfo() {
+		System.out.println("PRODUTOS: ");
+		System.out.printf("Nome: %s\n", produto.getNomeDoProduto());
+		System.out.printf("Frete: %.2f ",entrega.getFrete(), " R$");
+	}
+	
+	/*
+	 
+	 Calcular Frete, por enquanto não  utilizar solicitar para ser setado
+	 
+	 	//calculo para peso cubico para descobrir valor do frete, primeiro pega o volume e depois 
 	//multiplica pelo valor do transporte aqui to supondo um transporte rodoviario.
 
 	
@@ -18,5 +32,7 @@ public class CalcularFreteProdutoController {
 		return pesoCubico * 0.05;
 		
 	}
-
+	 
+	*/
+	
 }
