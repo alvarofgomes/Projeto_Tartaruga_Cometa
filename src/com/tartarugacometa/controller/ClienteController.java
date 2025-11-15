@@ -50,6 +50,22 @@ public class ClienteController {
 	}
 	
 	public void excluirContaDoCliente() {
+		if(this.cliente != null) {
+			
+			System.out.println("Certeza que deseja excluir os seus dados(s/n): ");
+			char res = sc.next().charAt(0);
+			
+			if(res == 's') {
+				this.cliente = null;
+				System.out.println("Cliente excluido. ");
+			}else if(res == 'n') {
+				System.out.println("Cancelando exclusão do cliente. ");
+			}else {
+				System.out.println("Solicitação inválida. ");
+			}
+		}else {
+			System.out.println("Cliente está vazio. ");
+		}
 		
 	}
 	
