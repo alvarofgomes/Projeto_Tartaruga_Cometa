@@ -1,26 +1,27 @@
 🐢 Tartaruga Cometa – Sistema de Gerenciamento de Entregas
 
-Nosso objetivo é construir uma aplicação web completa para a transportadora, permitindo o lançamento e o controle de entregas.
+- Nosso objetivo é construir uma aplicação web completa para a transportadora, permitindo o lançamento e o controle de entregas.
 
 🚀 Tecnologias Utilizadas
-Backend
 
-Java 8+
-Java Servlets 
-Apache Tomcat 8+
-Gradle
+- Backend
 
-Frontend
+  - Java 8+
+  - Java Servlets 
+  - Apache Tomcat 8+
+  - Gradle
 
-JSP (JavaServer Pages)
-HTML5 para estrutura
-CSS3 para estilização e layout
+- Frontend
 
-Banco de Dados
+  - JSP (JavaServer Pages)
+  - HTML5 para estrutura
+  - CSS3 para estilização e layout
 
-PostgreSQL 
-JDBC
-DAO (Data Access Object)
+- Banco de Dados
+
+  - PostgreSQL 
+  - JDBC
+  - DAO (Data Access Object)
 
 📌 Atualizações Contínuas
 
