@@ -9,10 +9,11 @@ public class ClienteController {
 	Scanner sc = new Scanner(System.in);
 	
 	private Cliente cliente;
+	//chamando toda vez pra verificar se e fisica ou juridica, uma logica meio nojenta por enquanto tentar melhorar assim que possivel
+	//tentei chamar dentro dos metodos porem fazia a verificacao toda hora a logica ficava pior unico jeito que pensei e consegui montar de momento foi esse. 
 	char l = verificarPessoaFisicaOuJuridica();
 	
 	public Cliente cadastrarCliente() {
-
 		if(this.l == 'f') {
 			System.out.println("Digite o nome do cliente: ");
 			String n = sc.nextLine();
@@ -29,11 +30,23 @@ public class ClienteController {
 			System.out.println("solicitação inválida");
 		}
 		return this.cliente;
-		
 	}
-	
-	public void atualizarDadosDoCliente() {
-		
+	//tentando referenciar o cliente pelo set acessando diretamente o object com this para não ter que criar um objeto novo no lugar 
+	public Cliente atualizarDadosDoCliente() {
+		if(this.l == 'f') {
+			System.out.println("Atualize o nome do cliente: ");
+			this.cliente.setNome(sc.nextLine());
+			System.out.println("Atualize o CPF do cliente: ");
+			this.cliente.setCpfCnpj(sc.nextLine());
+		}else if(this.l == 'j') {
+			System.out.println("Atualize o nome do cliente: ");
+			this.cliente.setNome(sc.nextLine());
+			System.out.println("Atualize o CNPJ do cliente: ");
+			this.cliente.setCpfCnpj(sc.nextLine());
+		}else {
+			System.out.println("solicitação inválida");
+		}
+		return this.cliente;
 	}
 	
 	public void excluirContaDoCliente() {
@@ -41,7 +54,6 @@ public class ClienteController {
 	}
 	
 	public void exibirInfo() {
-		
 		if(this.l == 'f') {
 			System.out.println("Dados DO CLIENTE: ");
 			System.out.printf("Nome: %s\n", this.cliente.getNome());
@@ -53,16 +65,14 @@ public class ClienteController {
 		}else {
 			System.out.println("Erro. ");
 		}
-		
 	}
 	
 	public static char verificarPessoaFisicaOuJuridica() {
-		
 		Scanner sc = new Scanner(System.in);
-		
+	
 		System.out.println("O cliente e pessoa física ou juridica(f/j)?");
 		char l = sc.next().charAt(0);
-		
+	
 		return l;
 	}
 	
