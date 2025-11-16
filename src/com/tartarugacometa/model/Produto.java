@@ -7,8 +7,10 @@ public class Produto {
 	//volume e passado na classe (CalcularFreteProdutoController) para calcular frete. 
 	private double volume;
 
-	public Produto(String nomeDoProduto, double volume) {
+	public Produto(String nomeDoProduto, double peso, double valor, double volume) {
 		this.nomeDoProduto = nomeDoProduto;
+		this.peso = peso;
+		this.valor = valor;
 		this.volume = volume;
 	}
 
