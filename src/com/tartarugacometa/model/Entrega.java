@@ -1,8 +1,13 @@
 package com.tartarugacometa.model;
+
+import java.util.List;
+
 public class Entrega {
 
 	private String status;
 	private double frete;
+	//lembrar de ajustar para varios produtos
+	private List<Produto> produtos;
 	
 	public Entrega(double frete) {
 		this.frete = frete;
