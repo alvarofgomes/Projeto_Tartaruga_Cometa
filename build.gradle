@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'war' 
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // A API de Servlets (escopo 'provided', pois o Tomcat já tem)
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+
+    // A API de JSP (também 'provided')
+    providedCompile 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+
+    // O Driver do PostgreSQL (verifiquem a versão mais recente)
+    implementation 'org.postgresql:postgresql:42.6.0' 
+}
