@@ -3,7 +3,6 @@ public class Cliente {
 
 	private String nome;
 	private String cpfCnpj;
-	private Endereco endereco;
 	
 	public Cliente(String nome, String cpfCnpj) {
 		this.nome = nome;

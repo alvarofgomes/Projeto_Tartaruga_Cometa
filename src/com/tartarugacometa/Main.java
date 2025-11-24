@@ -27,3 +27,4 @@ public class Main {
 	}
 
 }
+//File -> New -> Maven Project -> escolhe um archetype (quickstart ou webapp) caminho para criar maven
