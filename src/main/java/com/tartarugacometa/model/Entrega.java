@@ -13,15 +13,15 @@ public class Entrega {
 		this.frete = frete;
 	}
 
+	public Entrega() {
+	}
+	
 	public double getFrete() {
 		return frete;
 	}
 
 	public void setFrete(double frete) {
 		this.frete = frete;
-	}
-	
-	public Entrega() {
 	}
 	
 	public String getStatus() {
