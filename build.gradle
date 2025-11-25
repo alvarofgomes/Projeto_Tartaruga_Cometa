@@ -16,4 +16,6 @@ dependencies {
 
     // O Driver do PostgreSQL (verifiquem a versão mais recente)
     implementation 'org.postgresql:postgresql:42.6.0' 
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+	implementation("org.postgresql:postgresql:42.7.8")
 }

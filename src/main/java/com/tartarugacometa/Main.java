@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.tartarugacometa.model.*;
 import com.tartarugacometa.controller.*;
+import com.conexaofactory.*;
 
 public class Main {
 
@@ -11,18 +12,23 @@ public class Main {
 
 		Locale.setDefault(Locale.US);
 		
-		ClienteController cc = new ClienteController();
-		EnderecoController ec = new EnderecoController();
-		ProdutoController pc = new ProdutoController();
+		//quando roda pelo gradleTest ele dar erro de copilação por não ter teste do gradle
+		//tive que chamar diretamente no main para rodar na aplicação
+		ConnectionFactory c = new ConnectionFactory();
+		c.recuperarConexao();
 		
-		cc.cadastrarCliente();
-		cc.exibirInfo();
+		//ClienteController cc = new ClienteController();
+		//EnderecoController ec = new EnderecoController();
+		//ProdutoController pc = new ProdutoController();
 		
-		pc.cadastrarDadosDoProduto();
-		pc.exibirInfo();
+		//cc.cadastrarCliente();
+		//cc.exibirInfo();
 		
-		ec.cadastrarDadosDoEndereco();
-		ec.exibirInfo();
+		//pc.cadastrarDadosDoProduto();
+		//pc.exibirInfo();
+		
+		//ec.cadastrarDadosDoEndereco();
+		//ec.exibirInfo();
 		
 	}
 
