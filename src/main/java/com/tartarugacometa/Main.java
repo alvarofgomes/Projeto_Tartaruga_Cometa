@@ -3,6 +3,7 @@ package com.tartarugacometa;
 import java.util.*;
 
 import com.tartarugacometa.model.*;
+import com.tartarugacometa.service.ClienteService;
 import com.tartarugacometa.controller.*;
 import com.conexaofactory.*;
 
@@ -15,13 +16,12 @@ public class Main {
 		//quando roda pelo gradleTest ele dar erro de copilação por não ter teste do gradle
 		//tive que chamar diretamente no main para rodar na aplicação
 		ConnectionFactory c = new ConnectionFactory();
-		c.recuperarConexao();
 		
-		//ClienteController cc = new ClienteController();
+		ClienteService cs = new ClienteService();
 		//EnderecoController ec = new EnderecoController();
 		//ProdutoController pc = new ProdutoController();
 		
-		//cc.cadastrarCliente();
+		cs.cadastrarCliente();
 		//cc.exibirInfo();
 		
 		//pc.cadastrarDadosDoProduto();

@@ -2,6 +2,7 @@ package com.tartarugacometa.controller;
 
 import java.util.*;
 
+import com.conexaofactory.ConnectionFactory;
 import com.tartarugacometa.model.Cliente;
 
 public class ClienteController {
@@ -9,11 +10,13 @@ public class ClienteController {
 	Scanner sc = new Scanner(System.in);
 	
 	private Cliente cliente;
+	
 	//chamando toda vez pra verificar se e fisica ou juridica, uma logica meio nojenta por enquanto tentar melhorar assim que possivel
 	//tentei chamar dentro dos metodos porem fazia a verificacao toda hora a logica ficava pior unico jeito que pensei e consegui montar de momento foi esse. 
 	char l = verificarPessoaFisicaOuJuridica();
 	
 	public Cliente cadastrarCliente() {
+		
 		if(this.l == 'f') {
 			System.out.println("Digite o nome do cliente: ");
 			String n = sc.nextLine();
