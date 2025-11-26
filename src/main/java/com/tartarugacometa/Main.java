@@ -17,12 +17,12 @@ public class Main {
 		//tive que chamar diretamente no main para rodar na aplicação
 		ConnectionFactory c = new ConnectionFactory();
 		
-		ClienteService cs = new ClienteService();
+		ClienteController cc = new ClienteController();
 		//EnderecoController ec = new EnderecoController();
 		//ProdutoController pc = new ProdutoController();
 		
-		cs.cadastrarCliente();
-		//cc.exibirInfo();
+		cc.cadastrarCliente();
+		cc.exibirInfo();
 		
 		//pc.cadastrarDadosDoProduto();
 		//pc.exibirInfo();
