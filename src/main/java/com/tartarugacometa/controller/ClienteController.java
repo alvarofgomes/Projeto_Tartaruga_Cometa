@@ -14,7 +14,11 @@ public class ClienteController {
 	
 	//criando obj para conseguir acessar listar clientes do service
 	private ConnectionFactory connection;
-	
+	//criando construtor para verificar o porque o connection está ficando null mesmo retornando algo para ele do service
+    public ClienteController() {
+        this.connection = new ConnectionFactory();
+    }
+
 	//Objeto do cliente service
 	ClienteService clienteService = new ClienteService();
 	
