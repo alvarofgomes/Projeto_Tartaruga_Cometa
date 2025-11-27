@@ -15,13 +15,13 @@ public class Main {
 		
 		//quando roda pelo gradleTest ele dar erro de copilação por não ter teste do gradle
 		//tive que chamar diretamente no main para rodar na aplicação
-		ConnectionFactory c = new ConnectionFactory();
+		//ConnectionFactory c = new ConnectionFactory();
 		
 		ClienteController cc = new ClienteController();
 		//EnderecoController ec = new EnderecoController();
 		//ProdutoController pc = new ProdutoController();
 		
-		cc.cadastrarCliente();
+		cc.atualizarDadosDoCliente();
 		cc.exibirInfo();
 		
 		//pc.cadastrarDadosDoProduto();

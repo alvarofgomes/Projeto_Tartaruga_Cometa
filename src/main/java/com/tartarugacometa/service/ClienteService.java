@@ -44,7 +44,7 @@ public class ClienteService {
 		}
 		  
 		*/
-		String sql = "INSERT INTO clientes (nome,cpfcnpj)" + "VALUES (?, ?)";
+		String sql = "INSERT INTO clientes (nome,cpfcnpj)" + "VALUES (?, ?);";
 		
 		Connection conn = connection.recuperarConexao();
 		
@@ -61,6 +61,28 @@ public class ClienteService {
 			throw new RuntimeException();
 		}
 		
+	}
+	//teste para atualizar na tabela deixar para ajustar ao decorrer do curso 
+	//focar em criar diretamente pelo terminal de todas as classes(faltando endereço e produtos)
+	public void atualizarClienteService(Cliente cliente){
+
+		String sql = "UPDATE clientes SET nome = ?, cpfcnpj = ? WHERE id_cliente = ?;";
+		
+		Connection conn = connection.recuperarConexao();
+		
+		try {
+			
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			
+			preparedStatement.setString(1, cliente.getNome());
+			preparedStatement.setString(2, cliente.getCpfCnpj());
+			preparedStatement.setLong(3, cliente.getId());
+			
+			preparedStatement.execute();
+			
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
 	}
 	
 }

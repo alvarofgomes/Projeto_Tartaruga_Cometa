@@ -4,7 +4,7 @@ import java.util.*;
 
 import com.conexaofactory.ConnectionFactory;
 import com.tartarugacometa.model.Cliente;
-import com.tartarugacometa.service.ClienteService;
+import com.tartarugacometa.service.*;
 
 public class ClienteController {
 
@@ -42,21 +42,25 @@ public class ClienteController {
 		
 	}
 	//tentando referenciar o cliente pelo set acessando diretamente o object com this para não ter que criar um objeto novo no lugar 
-	public Cliente atualizarDadosDoCliente() {
+	public void atualizarDadosDoCliente() {
 		if(this.l == 'f') {
 			System.out.println("Atualize o nome do cliente: ");
 			this.cliente.setNome(sc.nextLine());
 			System.out.println("Atualize o CPF do cliente: ");
 			this.cliente.setCpfCnpj(sc.nextLine());
+			System.out.println("Digite o id do cliente: ");
+			this.cliente.setId(sc.nextLong());
 		}else if(this.l == 'j') {
 			System.out.println("Atualize o nome do cliente: ");
 			this.cliente.setNome(sc.nextLine());
 			System.out.println("Atualize o CNPJ do cliente: ");
 			this.cliente.setCpfCnpj(sc.nextLine());
+			System.out.println("Digite o id do cliente: ");
+			this.cliente.setId(sc.nextLong());
 		}else {
 			System.out.println("solicitação inválida");
 		}
-		return this.cliente;
+		clienteService.atualizarClienteService(this.cliente);
 	}
 	
 	public void excluirContaDoCliente() {
