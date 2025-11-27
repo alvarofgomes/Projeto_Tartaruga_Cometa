@@ -1,7 +1,7 @@
 package com.tartarugacometa.model;
 public class Cliente {
 
-	private Long id;
+	private int id;
 	private String nome;
 	private String cpfCnpj;
 	
@@ -25,10 +25,10 @@ public class Cliente {
 	public void setCpfCnpj(String cpfCnpj) {
 		this.cpfCnpj = cpfCnpj;
 	}
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

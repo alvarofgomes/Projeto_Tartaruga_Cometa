@@ -9,16 +9,15 @@ import com.tartarugacometa.service.*;
 public class ClienteController {
 
 	Scanner sc = new Scanner(System.in);
-	
-	private Cliente cliente;
 	ClienteService clienteService = new ClienteService();
 	
 	//chamando toda vez pra verificar se e fisica ou juridica, uma logica meio nojenta por enquanto tentar melhorar assim que possivel
 	//tentei chamar dentro dos metodos porem fazia a verificacao toda hora a logica ficava pior unico jeito que pensei e consegui montar de momento foi esse. 
 	char l = verificarPessoaFisicaOuJuridica();
 	
-	public void cadastrarCliente() {
+	public Cliente cadastrarCliente() {
 		
+		Cliente cliente = new Cliente();
 		String nome;
 		String cpf;
 		
@@ -27,43 +26,45 @@ public class ClienteController {
 			nome = sc.nextLine();
 			System.out.println("Digite o CPF do cliente: ");
 			cpf = sc.nextLine();
-			this.cliente = new Cliente(nome,cpf);
+			cliente = new Cliente(nome,cpf);
 		}else if(this.l == 'j') {
 			System.out.println("Digite o nome do cliente: ");
 			nome = sc.nextLine();
 			System.out.println("Digite o CNPJ do cliente: ");
 			cpf = sc.nextLine();
-			this.cliente = new Cliente(nome,cpf);
+			cliente = new Cliente(nome,cpf);
 		}else {
 			System.out.println("solicitação inválida");
 		}
 		
-		clienteService.cadastrarClienteService(this.cliente);
-		
+		clienteService.cadastrarClienteService(cliente);
+		return cliente;
 	}
 	//tentando referenciar o cliente pelo set acessando diretamente o object com this para não ter que criar um objeto novo no lugar 
-	public void atualizarDadosDoCliente() {
+	public Cliente atualizarDadosDoCliente() {
+		Cliente cliente1 = new Cliente();
 		if(this.l == 'f') {
 			System.out.println("Atualize o nome do cliente: ");
-			this.cliente.setNome(sc.nextLine());
+			cliente1.setNome(sc.nextLine());
 			System.out.println("Atualize o CPF do cliente: ");
-			this.cliente.setCpfCnpj(sc.nextLine());
+			cliente1.setCpfCnpj(sc.nextLine());
 			System.out.println("Digite o id do cliente: ");
-			this.cliente.setId(sc.nextLong());
+			cliente1.setId(sc.nextInt());
 		}else if(this.l == 'j') {
 			System.out.println("Atualize o nome do cliente: ");
-			this.cliente.setNome(sc.nextLine());
+			cliente1.setNome(sc.nextLine());
 			System.out.println("Atualize o CNPJ do cliente: ");
-			this.cliente.setCpfCnpj(sc.nextLine());
+			cliente1.setCpfCnpj(sc.nextLine());
 			System.out.println("Digite o id do cliente: ");
-			this.cliente.setId(sc.nextLong());
+			cliente1.setId(sc.nextInt());
 		}else {
 			System.out.println("solicitação inválida");
 		}
-		clienteService.atualizarClienteService(this.cliente);
+		clienteService.atualizarClienteService(cliente1);
+		return cliente1;
 	}
-	
-	public void excluirContaDoCliente() {
+	/*
+	public void excluirContaDoCliente(int id) {
 		if(this.cliente != null) {
 			
 			System.out.println("Certeza que deseja excluir os seus dados(s/n): ");
@@ -82,16 +83,16 @@ public class ClienteController {
 		}
 		
 	}
-	
-	public void exibirInfo() {
+	*/
+	public void exibirInfo(Cliente cliente) {
 		if(this.l == 'f') {
 			System.out.println("Dados DO CLIENTE: ");
-			System.out.printf("Nome: %s\n", this.cliente.getNome());
-			System.out.printf("CPF: %s\n", this.cliente.getCpfCnpj());
+			System.out.printf("Nome: %s\n", cliente.getNome());
+			System.out.printf("CPF: %s\n", cliente.getCpfCnpj());
 		}else if(this.l == 'j') {
 			System.out.println("Dados DO CLIENTE: ");
-			System.out.printf("Nome: %s\n", this.cliente.getNome());
-			System.out.printf("CNPJ: %s\n", this.cliente.getCpfCnpj());
+			System.out.printf("Nome: %s\n", cliente.getNome());
+			System.out.printf("CNPJ: %s\n", cliente.getCpfCnpj());
 		}else {
 			System.out.println("Erro. ");
 		}

@@ -76,7 +76,7 @@ public class ClienteService {
 			
 			preparedStatement.setString(1, cliente.getNome());
 			preparedStatement.setString(2, cliente.getCpfCnpj());
-			preparedStatement.setLong(3, cliente.getId());
+			preparedStatement.setInt(3, cliente.getId());
 			
 			preparedStatement.execute();
 			
