@@ -3,8 +3,11 @@ package com.tartarugacometa.service;
 import com.tartarugacometa.model.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.conexaofactory.ConnectionFactory;
 import com.tartarugacometa.model.Cliente;
@@ -15,6 +18,11 @@ public class ClienteService {
 	
 	private Cliente cliente;
 	private ConnectionFactory connection;
+	private Connection conn;
+	//criando um construtor para acessar pela listagem da tabela clientes por isso o objeto conn
+	public ClienteService(Connection connection) {
+		this.conn = connection;
+	}
 	
     public ClienteService(){
         this.connection = new ConnectionFactory();
@@ -50,20 +58,19 @@ public class ClienteService {
 		
 		try {
 			
-			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			preparedStatement.setString(1, cliente.getNome());
-			preparedStatement.setString(2, cliente.getCpfCnpj());
+			ps.setString(1, cliente.getNome());
+			ps.setString(2, cliente.getCpfCnpj());
 			
-			preparedStatement.execute();
+			ps.execute();
 			
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
 		
 	}
-	//teste para atualizar na tabela deixar para ajustar ao decorrer do curso 
-	//focar em criar diretamente pelo terminal de todas as classes(faltando endereço e produtos)
+	
 	public void atualizarClienteService(Cliente cliente){
 
 		String sql = "UPDATE clientes SET nome = ?, cpfcnpj = ? WHERE id_cliente = ?;";
@@ -72,17 +79,46 @@ public class ClienteService {
 		
 		try {
 			
-			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			preparedStatement.setString(1, cliente.getNome());
-			preparedStatement.setString(2, cliente.getCpfCnpj());
-			preparedStatement.setInt(3, cliente.getId());
+			ps.setString(1, cliente.getNome());
+			ps.setString(2, cliente.getCpfCnpj());
+			ps.setInt(3, cliente.getId());
 			
-			preparedStatement.execute();
+			ps.execute();
 			
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	public Set<Cliente> listarClientes(){
+		Set<Cliente> clientes = new HashSet<>();
+		//setando a tabela do banco(nesse caso e clientes)
+		String sql = "SELECT * FROM clientes";
+		
+		//Criando o loop para listar os dados do banco no terminal do java para não está acessndo toda hora o banco
+		//utilizando try porque toda execução precisa de uma exceção para ta sendo executada
+		try {
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet resultSet = ps.executeQuery();
+			
+			while(resultSet.next()) {
+				
+				String nome = resultSet.getString(1);
+				String cpfCnpj = resultSet.getString(2);
+				
+				Cliente cliente = new Cliente(nome,cpfCnpj);
+				
+				clientes.add(new Cliente(nome,cpfCnpj));
+				
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return clientes;
 	}
 	
 }

@@ -1,5 +1,7 @@
 package com.tartarugacometa.controller;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.*;
 
 import com.conexaofactory.ConnectionFactory;
@@ -9,6 +11,11 @@ import com.tartarugacometa.service.*;
 public class ClienteController {
 
 	Scanner sc = new Scanner(System.in);
+	
+	//criando obj para conseguir acessar listar clientes do service
+	private ConnectionFactory connection;
+	
+	//Objeto do cliente service
 	ClienteService clienteService = new ClienteService();
 	
 	//chamando toda vez pra verificar se e fisica ou juridica, uma logica meio nojenta por enquanto tentar melhorar assim que possivel
@@ -84,6 +91,14 @@ public class ClienteController {
 		
 	}
 	*/
+	
+	public Set<Cliente> listarClientesCadastrados(){
+		
+		Connection conn = connection.recuperarConexao();
+		return new ClienteService(conn).listarClientes();
+		
+	}
+	
 	public void exibirInfo(Cliente cliente) {
 		if(this.l == 'f') {
 			System.out.println("Dados DO CLIENTE: ");
