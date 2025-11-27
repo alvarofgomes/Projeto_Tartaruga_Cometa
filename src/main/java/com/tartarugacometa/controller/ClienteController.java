@@ -99,6 +99,8 @@ public class ClienteController {
 	public Set<Cliente> listarClientesCadastrados(){
 		
 		Connection conn = connection.recuperarConexao();
+		//rede conectando mas não está trazendo os dados do clientes para o terminal
+		System.out.println("teste");
 		return new ClienteService(conn).listarClientes();
 		
 	}
