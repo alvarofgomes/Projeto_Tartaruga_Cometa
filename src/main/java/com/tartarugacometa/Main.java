@@ -21,9 +21,22 @@ public class Main {
 		//EnderecoController ec = new EnderecoController();
 		//ProdutoController pc = new ProdutoController();
 		
-		for (Cliente cliente : cc.listarClientesCadastrados()) {
+		//Cliente c = (Cliente)cc.atualizarDadosDoCliente();
+		
+	 	for (Cliente cliente : cc.listarClientesCadastrados()) {
+		System.out.println(cliente.getNome());
+	 	}
+		
+		/*
+		 
+		 Para listar clientes que e definido como uma lista com Hash
+		 
+		 	for (Cliente cliente : cc.listarClientesCadastrados()) {
 			System.out.println(cliente.getNome());
 		}
+		
+		 
+		*/
 		
 		//pc.cadastrarDadosDoProduto();
 		//pc.exibirInfo();

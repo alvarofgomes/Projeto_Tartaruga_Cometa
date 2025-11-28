@@ -64,6 +64,8 @@ public class ClienteService {
 			ps.setString(2, cliente.getCpfCnpj());
 			
 			ps.execute();
+			ps.close();
+			conn.close();
 			
 		}catch(SQLException e) {
 			throw new RuntimeException();
@@ -86,6 +88,8 @@ public class ClienteService {
 			ps.setInt(3, cliente.getId());
 			
 			ps.execute();
+			ps.close();
+			conn.close();
 			
 		}catch(SQLException e) {
 			throw new RuntimeException();
@@ -102,18 +106,22 @@ public class ClienteService {
 		try {
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet resultSet = ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 			
-			while(resultSet.next()) {
+			while(rs.next()) {
 				
-				String nome = resultSet.getString(2);
-				String cpfCnpj = resultSet.getString(3);
+				String nome = rs.getString(2);
+				String cpfCnpj = rs.getString(3);
 				
 				Cliente cliente = new Cliente(nome,cpfCnpj);
 				
 				clientes.add(cliente);
 				
 			}
+			
+			ps.close();
+			rs.close();
+			conn.close();
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

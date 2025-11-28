@@ -8,6 +8,7 @@ repositories {
 }
 
 dependencies {
+
     // A API de Servlets (escopo 'provided', pois o Tomcat já tem)
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
 
@@ -16,6 +17,11 @@ dependencies {
 
     // O Driver do PostgreSQL (verifiquem a versão mais recente)
     implementation 'org.postgresql:postgresql:42.6.0' 
+    
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
 	implementation("org.postgresql:postgresql:42.7.8")
+	
+	// https://mvnrepository.com/artifact/com.zaxxer/HikariCP
+	implementation("com.zaxxer:HikariCP:7.0.2")
+	
 }
