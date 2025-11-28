@@ -21,7 +21,9 @@ public class Main {
 		//EnderecoController ec = new EnderecoController();
 		//ProdutoController pc = new ProdutoController();
 		
-		cc.listarClientesCadastrados();
+		for (Cliente cliente : cc.listarClientesCadastrados()) {
+			System.out.println(cliente.getNome());
+		}
 		
 		//pc.cadastrarDadosDoProduto();
 		//pc.exibirInfo();

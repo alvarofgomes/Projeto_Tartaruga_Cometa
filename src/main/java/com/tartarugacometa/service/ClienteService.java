@@ -106,12 +106,12 @@ public class ClienteService {
 			
 			while(resultSet.next()) {
 				
-				String nome = resultSet.getString(1);
-				String cpfCnpj = resultSet.getString(2);
+				String nome = resultSet.getString(2);
+				String cpfCnpj = resultSet.getString(3);
 				
 				Cliente cliente = new Cliente(nome,cpfCnpj);
 				
-				clientes.add(new Cliente(nome,cpfCnpj));
+				clientes.add(cliente);
 				
 			}
 			

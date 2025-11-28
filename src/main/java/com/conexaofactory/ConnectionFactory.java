@@ -13,7 +13,7 @@ public class ConnectionFactory {
         	//comando para iniciar postgres no cmd do linux (psql -h localhost -U postgres -p 5433)
         	System.out.println("Conexão ok. ");
             //lembrar que no pc de casa a porta e 5432 e no do trabalho e 5433
-        	return DriverManager.getConnection("jdbc:postgresql://localhost:5432/tartaruga_cometa?user=postgres&password=root");
+        	return DriverManager.getConnection("jdbc:postgresql://localhost:5433/tartaruga_cometa?user=postgres&password=root");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
