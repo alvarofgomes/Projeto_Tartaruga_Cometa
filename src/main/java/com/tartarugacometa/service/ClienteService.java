@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
+import javax.management.RuntimeErrorException;
+
 import com.conexaofactory.ConnectionFactory;
 import com.tartarugacometa.model.Cliente;
 
@@ -94,6 +96,28 @@ public class ClienteService {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	public void deletarCliente(Cliente cliente){
+		
+		String sql = "DELETE FROM clientes WHERE id_cliente = ?;";
+		
+		Connection conn = connection.recuperarConexao();
+		
+		try {
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, cliente.getId());
+			
+			ps.execute();
+			ps.close();
+			conn.close();
+			
+		}catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
 	}
 	
 	public Set<Cliente> listarClientes(){

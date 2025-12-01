@@ -74,9 +74,12 @@ public class ClienteController {
 		clienteService.atualizarClienteService(cliente1);
 		return cliente1;
 	}
-	/*
-	public void excluirContaDoCliente(int id) {
-		if(this.cliente != null) {
+	
+	public void excluirContaDoCliente() {
+		
+		Cliente cliente = new Cliente();
+		
+		/*if(this.cliente != null) {
 			
 			System.out.println("Certeza que deseja excluir os seus dados(s/n): ");
 			char res = sc.next().charAt(0);
@@ -91,10 +94,25 @@ public class ClienteController {
 			}
 		}else {
 			System.out.println("Cliente está vazio. ");
+		}*/
+		
+		System.out.println("Informe o ID do cliente: ");
+		cliente.setId(sc.nextInt());
+		
+		System.out.println("Certeza que deseja excluir os dados do cliente(s/n): ");
+		char res = sc.next().charAt(0);
+		
+		if(res == 's') { 
+			clienteService.deletarCliente(cliente);			
+			System.out.println("Cliente Excluido com sucesso!");
+		}else if(res == 'n') {
+			System.out.println("Cancelando exclusão do cliente. ");
+		}else {
+			System.out.println("Soliciçao invalida. ");
 		}
 		
 	}
-	*/
+	
 	
 	public Set<Cliente> listarClientesCadastrados(){
 		
