@@ -1,12 +1,14 @@
 package com.tartarugacometa.model;
 public class Endereco {
 
+	private int id;
 	private String rua;
 	private int numero;
 	private String bairro;
 	private String cidade;
 	private String estado;
 	private String cep;
+	private Cliente cliente;
 	
 	public Endereco(String rua, int numero, String bairro, String cidade, String estado, String cep) {
 		this.rua = rua;

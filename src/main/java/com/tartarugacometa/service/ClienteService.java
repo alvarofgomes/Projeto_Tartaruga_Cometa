@@ -1,6 +1,5 @@
 package com.tartarugacometa.service;
 
-import com.tartarugacometa.model.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,8 +8,6 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-import javax.management.RuntimeErrorException;
-
 import com.conexaofactory.ConnectionFactory;
 import com.tartarugacometa.model.Cliente;
 
@@ -18,7 +15,6 @@ public class ClienteService {
 
 	Scanner sc = new Scanner(System.in);
 	
-	private Cliente cliente;
 	private ConnectionFactory connection;
 	private Connection conn;
 	//criando um construtor para acessar pela listagem da tabela clientes por isso o objeto conn

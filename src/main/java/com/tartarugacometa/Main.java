@@ -22,7 +22,7 @@ public class Main {
 		//ProdutoController pc = new ProdutoController();
 		
 		//Cliente c = (Cliente)cc.atualizarDadosDoCliente();
-		cc.excluirContaDoCliente();
+		//cc.excluirContaDoCliente();
 		
 	 	for (Cliente cliente : cc.listarClientesCadastrados()) {
 		System.out.println(cliente.getNome());
