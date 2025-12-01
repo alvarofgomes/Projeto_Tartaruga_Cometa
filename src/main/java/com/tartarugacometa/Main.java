@@ -3,9 +3,7 @@ package com.tartarugacometa;
 import java.util.*;
 
 import com.tartarugacometa.model.*;
-import com.tartarugacometa.service.ClienteService;
 import com.tartarugacometa.controller.*;
-import com.conexaofactory.*;
 
 public class Main {
 
