@@ -23,7 +23,7 @@ public class EnderecoService {
 	
 	public void cadastraEnderecoService(Endereco endereco) {
 		
-		
+		String sql = "INSERT INTO enderecos (rua,numero,bairro,cidade) VALUES ();";
 		
 	}
 	
