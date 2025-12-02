@@ -1,152 +1,27 @@
 package com.tartarugacometa.service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
-
-import com.conexaofactory.ConnectionFactory;
+import com.tartarugacometa.dao.ClienteDAO;
 import com.tartarugacometa.model.Cliente;
+
+import java.util.Set;
 
 public class ClienteService {
 
-	Scanner sc = new Scanner(System.in);
-	
-	private ConnectionFactory connection;
-	private Connection conn;
-	//criando um construtor para acessar pela listagem da tabela clientes por isso o objeto conn
-	public ClienteService(Connection connection) {
-		this.conn = connection;
-	}
-	
-    public ClienteService(){
-        this.connection = new ConnectionFactory();
-    }
-	
-	//public void cadastrarCliente(Cliente cliente)
-	public void cadastrarClienteService(Cliente cliente) {
-		/*
-		 
-		String n;
-		String c;
-		
-		if(this.l == 'f') {
-			System.out.println("Digite o nome do cliente: ");
-			n = sc.nextLine();
-			System.out.println("Digite o CPF do cliente: ");
-			c = sc.nextLine();
-			this.cliente = new Cliente(n,c);
-		}else if(this.l == 'j') {
-			System.out.println("Digite o nome do cliente: ");
-			n = sc.nextLine();
-			System.out.println("Digite o CNPJ do cliente: ");
-			c = sc.nextLine();
-			this.cliente = new Cliente(n,c);
-		}else {
-			System.out.println("solicitação inválida");
-		}
-		  
-		*/
-		String sql = "INSERT INTO clientes (nome,cpfcnpj)" + "VALUES (?, ?);";
-		
-		Connection conn = connection.recuperarConexao();
-		
-		try {
-			
-			PreparedStatement ps = conn.prepareStatement(sql);
-			
-			ps.setString(1, cliente.getNome());
-			ps.setString(2, cliente.getCpfCnpj());
-			
-			ps.execute();
-			ps.close();
-			conn.close();
-			
-		}catch(SQLException e) {
-			throw new RuntimeException();
-		}
-		
-	}
-	
-	public void atualizarClienteService(Cliente cliente){
+    private ClienteDAO clienteDAO = new ClienteDAO();
 
-		String sql = "UPDATE clientes SET nome = ?, cpfcnpj = ? WHERE id_cliente = ?;";
-		
-		Connection conn = connection.recuperarConexao();
-		
-		try {
-			
-			PreparedStatement ps = conn.prepareStatement(sql);
-			
-			ps.setString(1, cliente.getNome());
-			ps.setString(2, cliente.getCpfCnpj());
-			ps.setInt(3, cliente.getId());
-			
-			ps.execute();
-			ps.close();
-			conn.close();
-			
-		}catch(SQLException e) {
-			throw new RuntimeException();
-		}
-	}
-	
-	public void deletarCliente(Cliente cliente){
-		
-		String sql = "DELETE FROM clientes WHERE id_cliente = ?;";
-		
-		Connection conn = connection.recuperarConexao();
-		
-		try {
-			
-			PreparedStatement ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1, cliente.getId());
-			
-			ps.execute();
-			ps.close();
-			conn.close();
-			
-		}catch(SQLException e) {
-			throw new RuntimeException(e);
-		}
-		
-	}
-	
-	public Set<Cliente> listarClientes(){
-		Set<Cliente> clientes = new HashSet<>();
-		//setando a tabela do banco(nesse caso e clientes)
-		String sql = "SELECT * FROM clientes";
-		
-		//Criando o loop para listar os dados do banco no terminal do java para não está acessndo toda hora o banco
-		//utilizando try porque toda execução precisa de uma exceção para ta sendo executada
-		try {
-			
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				
-				String nome = rs.getString(2);
-				String cpfCnpj = rs.getString(3);
-				
-				Cliente cliente = new Cliente(nome,cpfCnpj);
-				
-				clientes.add(cliente);
-				
-			}
-			
-			ps.close();
-			rs.close();
-			conn.close();
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-		return clientes;
-	}
-	
+    public void cadastrarClienteService(Cliente cliente) {
+        clienteDAO.cadastrarClienteDAO(cliente);
+    }
+
+    public void atualizarClienteService(Cliente cliente) {
+        clienteDAO.atualizarClienteDAO(cliente);
+    }
+
+    public void deletarClienteService(int id) {
+        clienteDAO.deletarClienteDAO(id);
+    }
+
+    public Set<Cliente> listarClientesService() {
+        return clienteDAO.listarClientesDAO();
+    }
 }

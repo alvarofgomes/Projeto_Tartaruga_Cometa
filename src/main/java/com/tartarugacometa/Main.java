@@ -22,9 +22,7 @@ public class Main {
 		//Cliente c = (Cliente)cc.atualizarDadosDoCliente();
 		//cc.excluirContaDoCliente();
 		
-	 	for (Cliente cliente : cc.listarClientesCadastrados()) {
-		System.out.println(cliente.getNome());
-	 	}
+		cc.listarClientes();
 		
 		/*
 		 
