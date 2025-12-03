@@ -1,27 +1,27 @@
-package com.tartarugacometa.service;
+package com.tartarugacometa.BO;
 
 import java.util.List;
 
 import com.tartarugacometa.dao.EnderecoDAO;
 import com.tartarugacometa.model.Endereco;
 
-public class EnderecoService {
+public class EnderecoBO {
 
     private EnderecoDAO enderecoDAO = new EnderecoDAO();
 
-    public void cadastrarEnderecoService(Endereco endereco) {
+    public void cadastrarEnderecoBO(Endereco endereco) {
         enderecoDAO.cadastrarEnderecoDAO(endereco);
     }
 
-    public void atualizarEnderecoService(Endereco endereco) {
+    public void atualizarEnderecoBO(Endereco endereco) {
         enderecoDAO.atualizarEnderecoDAO(endereco);
     }
 
-    public void deletarEnderecoService(int id) {
+    public void deletarEnderecoBO(int id) {
         enderecoDAO.deletarEnderecoDAO(id);
     }
 
-    public List<Endereco> listarEnderecosService() {
+    public List<Endereco> listarEnderecoBO() {
         return enderecoDAO.listarEnderecosDAO();
     }
     

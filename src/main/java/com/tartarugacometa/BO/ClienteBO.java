@@ -1,31 +1,31 @@
-package com.tartarugacometa.service;
+package com.tartarugacometa.BO;
 
 import com.tartarugacometa.dao.ClienteDAO;
 import com.tartarugacometa.model.Cliente;
 
 import java.util.List;
 
-public class ClienteService {
+public class ClienteBO {
 
     private ClienteDAO clienteDAO = new ClienteDAO();
 
-    public void cadastrarClienteService(Cliente cliente) {
+    public void cadastrarClienteBO(Cliente cliente) {
         clienteDAO.cadastrarClienteDAO(cliente);
     }
 
-    public void atualizarClienteService(Cliente cliente) {
+    public void atualizarClienteBO(Cliente cliente) {
         clienteDAO.atualizarClienteDAO(cliente);
     }
 
-    public void deletarClienteService(int id) {
+    public void deletarClienteBO(int id) {
         clienteDAO.deletarClienteDAO(id);
     }
 
-    public List<Cliente> listarClientesService() {
+    public List<Cliente> listarClientesBO() {
         return clienteDAO.listarClientesDAO();
     }
     
-    public Cliente buscarClientePorIdService(int id) {
+    public Cliente buscarClientePorIdBO(int id) {
         return clienteDAO.buscarClientePorIdDAO(id);
     }
     

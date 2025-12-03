@@ -2,17 +2,17 @@ package com.tartarugacometa.controller;
 
 import java.util.Scanner;
 
+import com.tartarugacometa.BO.ClienteBO;
+import com.tartarugacometa.BO.EnderecoBO;
 import com.tartarugacometa.model.Cliente;
 import com.tartarugacometa.model.Endereco;
-import com.tartarugacometa.service.ClienteService;
-import com.tartarugacometa.service.EnderecoService;
 
 public class EnderecoController {
 
     Scanner sc = new Scanner(System.in);
 
-    private EnderecoService enderecoService = new EnderecoService();
-    private ClienteService clienteService = new ClienteService();
+    private EnderecoBO endercoBo = new EnderecoBO();
+    private ClienteBO clienteBo = new ClienteBO();
 
     public void cadastrarEnderecoController() {
         Endereco endereco = new Endereco();
@@ -21,7 +21,7 @@ public class EnderecoController {
         int idCliente = sc.nextInt();
         sc.nextLine();
 
-        Cliente cliente = clienteService.buscarClientePorIdService(idCliente);
+        Cliente cliente = clienteBo.buscarClientePorIdBO(idCliente);
         endereco.setCliente(cliente);
 
         System.out.println("Rua: ");
@@ -38,7 +38,7 @@ public class EnderecoController {
         System.out.println("CEP: ");
         endereco.setCep(sc.nextLine());
 
-        enderecoService.cadastrarEnderecoService(endereco);
+        endercoBo.cadastrarEnderecoBO(endereco);
         System.out.println("Endere�o cadastrado com sucesso!");
     }
 
@@ -63,7 +63,7 @@ public class EnderecoController {
         System.out.println("Novo CEP: ");
         endereco.setCep(sc.nextLine());
 
-        enderecoService.atualizarEnderecoService(endereco);
+        endercoBo.atualizarEnderecoBO(endereco);
         System.out.println("Endere�o atualizado com sucesso!");
     }
 
@@ -71,13 +71,13 @@ public class EnderecoController {
         System.out.println("ID do endere�o para excluir: ");
         int id = sc.nextInt();
 
-        enderecoService.deletarEnderecoService(id);
+        endercoBo.deletarEnderecoBO(id);
         System.out.println("Endere�o exclu�do com sucesso!");
     }
     
     public void listarEnderecosController() {
     	System.out.println("Listando endereços cadastrados: ");
-        enderecoService.listarEnderecosService()
+    	endercoBo.listarEnderecoBO()
             .forEach(endereco ->
                 System.out.println(endereco.getId() + " - " + endereco.getRua() + " - " + endereco.getCidade() + " - " + endereco.getEstado()));
     }

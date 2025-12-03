@@ -1,27 +1,27 @@
-package com.tartarugacometa.service;
+package com.tartarugacometa.BO;
 
 import java.util.List;
 
 import com.tartarugacometa.dao.ProdutoDAO;
 import com.tartarugacometa.model.Produto;
 
-public class ProdutoService {
+public class ProdutoBO {
 
 	private ProdutoDAO produtoDAO = new ProdutoDAO();
 	
-	public void cadastrarProdutoService(Produto produto) {
+	public void cadastrarProdutoBO(Produto produto) {
 		produtoDAO.cadastrarProdutoDAO(produto);
 	}
 	
-	public void atualizarProdutoService(Produto produto) {
+	public void atualizarProdutoBO(Produto produto) {
 		produtoDAO.atualizarProdutoDAO(produto);
 	}
 	
-	public void deletarProdutoService(int id) {
+	public void deletarProdutoBO(int id) {
 		produtoDAO.deletarProdutoDAO(id);
 	}
 	
-	public List<Produto> listarProdutoService(){
+	public List<Produto> listarProdutoBO(){
 		return produtoDAO.listarProdutoDAO();
 	}
 	

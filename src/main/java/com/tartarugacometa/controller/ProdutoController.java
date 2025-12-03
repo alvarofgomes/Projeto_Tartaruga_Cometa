@@ -2,15 +2,13 @@ package com.tartarugacometa.controller;
 
 import java.util.Scanner;
 
-import com.tartarugacometa.model.Cliente;
-import com.tartarugacometa.model.Entrega;
+import com.tartarugacometa.BO.ProdutoBO;
 import com.tartarugacometa.model.Produto;
-import com.tartarugacometa.service.ProdutoService;
 
 public class ProdutoController {
 
 	Scanner sc = new Scanner(System.in);
-	private ProdutoService produtoService = new ProdutoService();
+	private ProdutoBO produtoBo = new ProdutoBO();
 	
 	public void cadastrarDadosDoProduto() {
 		
@@ -23,7 +21,7 @@ public class ProdutoController {
 		System.out.println("Digite o valor do produto: ");
 		double valorDoProduto = sc.nextDouble();
 		Produto produto = new Produto(nomeDoProduto,peso,volumeDoProduto,valorDoProduto);
-		produtoService.cadastrarProdutoService(produto);
+		produtoBo.cadastrarProdutoBO(produto);
 		System.out.println("Produto cadastrado!");
 		//this.produto = new Produto(n,c,vp,v);
 		
@@ -44,7 +42,7 @@ public class ProdutoController {
 		produto.setVolume(sc.nextDouble());
 		System.out.println("Novo valor: ");
 		produto.setValor(sc.nextDouble());
-		produtoService.atualizarProdutoService(produto);
+		produtoBo.atualizarProdutoBO(produto);
 		System.out.println("Produto atualizado!");
 	}
 	
@@ -53,7 +51,7 @@ public class ProdutoController {
 
 		System.out.println("Informe o ID:");
 		int id = sc.nextInt();
-		produtoService.deletarProdutoService(id);
+		produtoBo.deletarProdutoBO(id);
 		System.out.println("Produto excluído!");
 		
 	}
@@ -61,7 +59,7 @@ public class ProdutoController {
 	public void listarProdutosController() {
 		
 		System.out.println("Listando produtos cadastrados: ");
-		produtoService.listarProdutoService().forEach(produto -> {
+		produtoBo.listarProdutoBO().forEach(produto -> {
 			System.out.println(produto.getNomeDoProduto());
 		});
 	}
