@@ -15,7 +15,7 @@ public class EnderecoDAO {
     private ConnectionFactory connection = new ConnectionFactory();
 
     public void cadastrarEnderecoDAO(Endereco endereco) {
-        String sql = "INSERT INTO enderecos (rua, numero, bairro, cidade, estado, cep, clientes_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO enderecos (rua, numero, bairro, cidade, estado, cep, clientes_id) VALUES (?, ?, ?, ?, ?, ?, ?);";
 
         try (Connection conn = connection.recuperarConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -26,7 +26,7 @@ public class EnderecoDAO {
             ps.setString(4, endereco.getCidade());
             ps.setString(5, endereco.getEstado());
             ps.setString(6, endereco.getCep());
-            //obtendo obj de cliente no endereço para passar id para cliente_id
+            //obtendo obj de cliente no endereï¿½o para passar id para cliente_id
             ps.setInt(7, endereco.getCliente().getId());
 
             ps.execute();
@@ -36,7 +36,7 @@ public class EnderecoDAO {
     }
 
     public void atualizarEnderecoDAO(Endereco endereco) {
-        String sql = "UPDATE enderecos SET rua=?, numero=?, bairro=?, cidade=?, estado=?, cep=? WHERE id_endereco=?";
+        String sql = "UPDATE enderecos SET rua=?, numero=?, bairro=?, cidade=?, estado=?, cep=? WHERE id_endereco=?;";
 
         try (Connection conn = connection.recuperarConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -57,7 +57,7 @@ public class EnderecoDAO {
     }
 
     public void deletarEnderecoDAO(int id) {
-        String sql = "DELETE FROM enderecos WHERE id_endereco = ?";
+        String sql = "DELETE FROM enderecos WHERE id_endereco = ?;";
 
         try (Connection conn = connection.recuperarConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -72,9 +72,9 @@ public class EnderecoDAO {
     }
     
     public List<Endereco> listarEnderecosDAO() {
-        List<Endereco> lista = new ArrayList<>();
+        List<Endereco> enderecos = new ArrayList<>();
 
-        String sql = "SELECT * FROM enderecos";
+        String sql = "SELECT * FROM enderecos;";
 
         try (Connection conn = connection.recuperarConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -82,7 +82,7 @@ public class EnderecoDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Endereco e = new Endereco(
+                Endereco endereco = new Endereco(
                     rs.getString("rua"),
                     rs.getInt("numero"),
                     rs.getString("bairro"),
@@ -90,12 +90,12 @@ public class EnderecoDAO {
                     rs.getString("estado"),
                     rs.getString("cep")
                 );
-                e.setId(rs.getInt("id_endereco"));
-
-                lista.add(e);
+                endereco.setId(rs.getInt("id_endereco"));
+                enderecos.add(endereco);
+                
             }
 
-            return lista;
+            return enderecos;
 
         } catch (SQLException ex) {
             throw new RuntimeException(ex);

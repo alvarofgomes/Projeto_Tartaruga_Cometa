@@ -17,7 +17,7 @@ public class EnderecoController {
     public void cadastrarEnderecoController() {
         Endereco endereco = new Endereco();
 
-        System.out.println("ID do cliente que receberá o endereço: ");
+        System.out.println("ID do cliente que receberï¿½ o endereï¿½o: ");
         int idCliente = sc.nextInt();
         sc.nextLine();
 
@@ -26,7 +26,7 @@ public class EnderecoController {
 
         System.out.println("Rua: ");
         endereco.setRua(sc.nextLine());
-        System.out.println("Número: ");
+        System.out.println("Nï¿½mero: ");
         endereco.setNumero(sc.nextInt());
         sc.nextLine();
         System.out.println("Bairro: ");
@@ -39,19 +39,19 @@ public class EnderecoController {
         endereco.setCep(sc.nextLine());
 
         enderecoService.cadastrarEnderecoService(endereco);
-        System.out.println("Endereço cadastrado com sucesso!");
+        System.out.println("Endereï¿½o cadastrado com sucesso!");
     }
 
     public void atualizarEnderecoController() {
         Endereco endereco = new Endereco();
 
-        System.out.println("ID do endereço a atualizar: ");
+        System.out.println("ID do endereï¿½o a atualizar: ");
         endereco.setId(sc.nextInt());
         sc.nextLine();
 
         System.out.println("Nova Rua: ");
         endereco.setRua(sc.nextLine());
-        System.out.println("Novo Número: ");
+        System.out.println("Novo Nï¿½mero: ");
         endereco.setNumero(sc.nextInt());
         sc.nextLine();
         System.out.println("Novo Bairro: ");
@@ -64,18 +64,19 @@ public class EnderecoController {
         endereco.setCep(sc.nextLine());
 
         enderecoService.atualizarEnderecoService(endereco);
-        System.out.println("Endereço atualizado com sucesso!");
+        System.out.println("Endereï¿½o atualizado com sucesso!");
     }
 
     public void excluirEnderecoController() {
-        System.out.println("ID do endereço para excluir: ");
+        System.out.println("ID do endereï¿½o para excluir: ");
         int id = sc.nextInt();
 
         enderecoService.deletarEnderecoService(id);
-        System.out.println("Endereço excluído com sucesso!");
+        System.out.println("Endereï¿½o excluï¿½do com sucesso!");
     }
     
     public void listarEnderecosController() {
+    	System.out.println("Listando endereÃ§os cadastrados: ");
         enderecoService.listarEnderecosService()
             .forEach(endereco ->
                 System.out.println(endereco.getId() + " - " + endereco.getRua() + " - " + endereco.getCidade() + " - " + endereco.getEstado()));

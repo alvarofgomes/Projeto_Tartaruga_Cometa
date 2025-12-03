@@ -3,7 +3,7 @@ package com.tartarugacometa.service;
 import com.tartarugacometa.dao.ClienteDAO;
 import com.tartarugacometa.model.Cliente;
 
-import java.util.Set;
+import java.util.List;
 
 public class ClienteService {
 
@@ -21,7 +21,7 @@ public class ClienteService {
         clienteDAO.deletarClienteDAO(id);
     }
 
-    public Set<Cliente> listarClientesService() {
+    public List<Cliente> listarClientesService() {
         return clienteDAO.listarClientesDAO();
     }
     

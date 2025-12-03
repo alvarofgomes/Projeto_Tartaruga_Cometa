@@ -42,7 +42,7 @@ public class ClienteController {
         System.out.println("Informe o ID:");
         int id = sc.nextInt();
         clienteService.deletarClienteService(id);
-        System.out.println("Cliente excluído!");
+        System.out.println("Cliente excluÃ­do!");
         
     }
     

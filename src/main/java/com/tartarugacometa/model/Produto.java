@@ -1,17 +1,21 @@
 package com.tartarugacometa.model;
 public class Produto {
 
+	private int id;
 	private String nomeDoProduto;
 	private double peso;
-	private double valor;
 	//volume e passado na classe (CalcularFreteProdutoController) para calcular frete. 
 	private double volume;
+	private double valor;
 
-	public Produto(String nomeDoProduto, double peso, double valor, double volume) {
+	public Produto(String nomeDoProduto, double peso, double volume, double valor) {
 		this.nomeDoProduto = nomeDoProduto;
 		this.peso = peso;
-		this.valor = valor;
 		this.volume = volume;
+		this.valor = valor;
+	}
+	
+	public Produto() {
 	}
 
 	public double getVolume() {
@@ -48,6 +52,14 @@ public class Produto {
 	
 	public void setValor(double valor) {
 		this.valor = valor;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

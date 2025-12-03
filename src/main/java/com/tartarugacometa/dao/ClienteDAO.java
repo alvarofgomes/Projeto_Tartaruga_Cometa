@@ -4,8 +4,8 @@ import com.tartarugacometa.model.Cliente;
 import com.conexaofactory.ConnectionFactory;
 
 import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteDAO {
 
@@ -33,7 +33,7 @@ public class ClienteDAO {
 
     public void atualizarClienteDAO(Cliente cliente) {
     	
-        String sql = "UPDATE clientes SET nome = ?, cpfcnpj = ? WHERE id_cliente = ?";
+        String sql = "UPDATE clientes SET nome = ?, cpfcnpj = ? WHERE id_cliente = ?;";
 
         try (Connection conn = connectionFactory.recuperarConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -54,7 +54,7 @@ public class ClienteDAO {
 
     public void deletarClienteDAO(int id) {
     	
-        String sql = "DELETE FROM clientes WHERE id_cliente = ?";
+        String sql = "DELETE FROM clientes WHERE id_cliente = ?;";
 
         try (Connection conn = connectionFactory.recuperarConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -71,10 +71,10 @@ public class ClienteDAO {
         
     }
 
-    public Set<Cliente> listarClientesDAO() {
+    public List<Cliente> listarClientesDAO() {
     	
-        Set<Cliente> clientes = new HashSet<>();
-        String sql = "SELECT * FROM clientes";
+        List<Cliente> clientes = new ArrayList<>();
+        String sql = "SELECT * FROM clientes;";
 
         try (Connection conn = connectionFactory.recuperarConexao();
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -82,12 +82,14 @@ public class ClienteDAO {
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
+            	
                 Cliente cliente = new Cliente(
                 rs.getString("nome"),
-                rs.getString("cpfcnpj")
-                );
+                rs.getString("cpfcnpj"));
+                
                 cliente.setId(rs.getInt("id_cliente"));
                 clientes.add(cliente);
+                
             }
             
             ps.execute();
@@ -104,7 +106,7 @@ public class ClienteDAO {
     
     public Cliente buscarClientePorIdDAO(int id) {
     	
-        String sql = "SELECT * FROM clientes WHERE id_cliente = ?";
+        String sql = "SELECT * FROM clientes WHERE id_cliente = ?;";
 
         try (Connection conn = connectionFactory.recuperarConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -119,7 +121,7 @@ public class ClienteDAO {
                 cliente.setCpfCnpj(rs.getString("cpfcnpj"));
                 return cliente;
             } else {
-                throw new RuntimeException("Cliente com ID " + id + " não encontrado.");
+                throw new RuntimeException("Cliente com ID " + id + " nï¿½o encontrado.");
             }
 
         } catch (SQLException e) {

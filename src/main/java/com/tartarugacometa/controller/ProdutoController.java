@@ -5,57 +5,68 @@ import java.util.Scanner;
 import com.tartarugacometa.model.Cliente;
 import com.tartarugacometa.model.Entrega;
 import com.tartarugacometa.model.Produto;
+import com.tartarugacometa.service.ProdutoService;
 
 public class ProdutoController {
 
 	Scanner sc = new Scanner(System.in);
-	
-	private Produto produto;
+	private ProdutoService produtoService = new ProdutoService();
 	
 	public void cadastrarDadosDoProduto() {
 		
 		System.out.println("Digite o nome do do produto: ");
-		String n = sc.nextLine();
+		String nomeDoProduto = sc.nextLine();
 		System.out.println("Digite o peso do produto: ");
-		double c = sc.nextDouble();
-		System.out.println("Digite o valor do produto: ");
-		double vp = sc.nextDouble();
+		double peso = sc.nextDouble();
 		System.out.println("Digite o volume do produto: ");
-		double v = sc.nextDouble();
-		this.produto = new Produto(n,c,vp,v);
+		double volumeDoProduto = sc.nextDouble();
+		System.out.println("Digite o valor do produto: ");
+		double valorDoProduto = sc.nextDouble();
+		Produto produto = new Produto(nomeDoProduto,peso,volumeDoProduto,valorDoProduto);
+		produtoService.cadastrarProdutoService(produto);
+		System.out.println("Produto cadastrado!");
+		//this.produto = new Produto(n,c,vp,v);
 		
 	}
 	
 	public void atualizarDadosDoProduto() {
-		System.out.println("Atualize o nome do produto: ");
-		this.produto.setNomeDoProduto(sc.nextLine());
-		System.out.println("Atualize o peso do produto: ");
-		this.produto.setPeso(sc.nextDouble());
-		System.out.println("Atualize o valor do produto: ");
-		this.produto.setValor(sc.nextDouble());
-		System.out.println("Atualize o volume do produto: ");
-		this.produto.setVolume(sc.nextDouble());
+		
+		Produto produto = new Produto();
+		
+		System.out.println("ID: ");
+		produto.setId(sc.nextInt());
+		sc.nextLine();
+		System.out.println("Novo nome: ");
+		produto.setNomeDoProduto(sc.nextLine());
+		System.out.println("Novo peso: ");
+		produto.setPeso(sc.nextDouble());
+		System.out.println("Novo volume: ");
+		produto.setVolume(sc.nextDouble());
+		System.out.println("Novo valor: ");
+		produto.setValor(sc.nextDouble());
+		produtoService.atualizarProdutoService(produto);
+		System.out.println("Produto atualizado!");
 	}
+	
 	
 	public void excluirDadosDoProduto() {
-		if(this.produto != null) {
-			
-			System.out.println("Certeza que deseja excluir o produto(s/n): ");
-			char res = sc.next().charAt(0);
-			
-			if(res == 's') {
-				this.produto = null;
-				System.out.println("Produto apagado da base de dados. ");
-			}else if(res == 'n') {
-				System.out.println("Solicitação cancelada. ");
-			}else {
-				System.out.println("Solicitção invalida");
-			}
-		}else {
-			System.out.println("Não existe produto para excluir. ");
-		}
+
+		System.out.println("Informe o ID:");
+		int id = sc.nextInt();
+		produtoService.deletarProdutoService(id);
+		System.out.println("Produto excluído!");
+		
 	}
 	
+	public void listarProdutosController() {
+		
+		System.out.println("Listando produtos cadastrados: ");
+		produtoService.listarProdutoService().forEach(produto -> {
+			System.out.println(produto.getNomeDoProduto());
+		});
+	}
+	
+	/*
 	public void exibirInfo() {
 		System.out.println("PRODUTOS: ");
 		System.out.printf("Nome: %s\n", this.produto.getNomeDoProduto());
@@ -64,7 +75,7 @@ public class ProdutoController {
 		System.out.printf("Volume: %.2f\n", this.produto.getVolume());
 	}
 	
-	/*
+
 	 
 	 Calcular Frete, por enquanto não  utilizar solicitar para ser setado
 	 
