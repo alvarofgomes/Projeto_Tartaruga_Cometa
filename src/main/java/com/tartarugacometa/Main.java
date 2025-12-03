@@ -2,7 +2,6 @@ package com.tartarugacometa;
 
 import java.util.*;
 
-import com.tartarugacometa.model.*;
 import com.tartarugacometa.controller.*;
 
 public class Main {
@@ -16,13 +15,14 @@ public class Main {
 		//ConnectionFactory c = new ConnectionFactory();
 		
 		ClienteController cc = new ClienteController();
-		//EnderecoController ec = new EnderecoController();
+		EnderecoController ec = new EnderecoController();
 		//ProdutoController pc = new ProdutoController();
 		
 		//Cliente c = (Cliente)cc.atualizarDadosDoCliente();
 		//cc.excluirContaDoCliente();
 		
-		cc.listarClientes();
+		//cc.excluirClienteController();
+		ec.listarEnderecosController();
 		
 		/*
 		 

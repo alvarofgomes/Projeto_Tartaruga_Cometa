@@ -24,4 +24,9 @@ public class ClienteService {
     public Set<Cliente> listarClientesService() {
         return clienteDAO.listarClientesDAO();
     }
+    
+    public Cliente buscarClientePorIdService(int id) {
+        return clienteDAO.buscarClientePorIdDAO(id);
+    }
+    
 }

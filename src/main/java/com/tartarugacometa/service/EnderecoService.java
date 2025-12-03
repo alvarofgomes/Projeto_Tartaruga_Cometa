@@ -1,30 +1,28 @@
 package com.tartarugacometa.service;
 
-import java.sql.Connection;
-import java.util.Scanner;
+import java.util.List;
 
-import com.conexaofactory.ConnectionFactory;
+import com.tartarugacometa.dao.EnderecoDAO;
 import com.tartarugacometa.model.Endereco;
 
 public class EnderecoService {
 
-	Scanner sc = new Scanner(System.in);
-	
-	private ConnectionFactory connection;
-	private Connection conn;
-	
-	public EnderecoService(Connection connection) {
-		this.conn = connection;
-	}
+    private EnderecoDAO enderecoDAO = new EnderecoDAO();
 
-	public EnderecoService() {
-		this.connection = new ConnectionFactory();
-	}
-	
-	public void cadastraEnderecoService(Endereco endereco) {
-		
-		String sql = "INSERT INTO enderecos (rua,numero,bairro,cidade) VALUES ();";
-		
-	}
-	
+    public void cadastrarEnderecoService(Endereco endereco) {
+        enderecoDAO.cadastrarEnderecoDAO(endereco);
+    }
+
+    public void atualizarEnderecoService(Endereco endereco) {
+        enderecoDAO.atualizarEnderecoDAO(endereco);
+    }
+
+    public void deletarEnderecoService(int id) {
+        enderecoDAO.deletarEnderecoDAO(id);
+    }
+
+    public List<Endereco> listarEnderecosService() {
+        return enderecoDAO.listarEnderecosDAO();
+    }
+    
 }
