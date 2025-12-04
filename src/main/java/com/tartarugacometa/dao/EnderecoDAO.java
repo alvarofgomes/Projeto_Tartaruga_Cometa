@@ -13,7 +13,7 @@ import com.tartarugacometa.model.Endereco;
 public class EnderecoDAO {
 
     private ConnectionFactory connection = new ConnectionFactory();
-
+    //lembrar de tratar as exception pra dar um erro de cada metodo e não um erro de runtime que e outro erro aleatorio sem base no codigo 
     public void cadastrarEnderecoDAO(Endereco endereco) {
         String sql = "INSERT INTO enderecos (rua, numero, bairro, cidade, estado, cep, clientes_id) VALUES (?, ?, ?, ?, ?, ?, ?);";
 

@@ -10,7 +10,7 @@ import java.util.List;
 public class ClienteDAO {
 
     private ConnectionFactory connectionFactory = new ConnectionFactory();
-
+    //lembrar de tratar as exception pra dar um erro de cada metodo e não um erro de runtime que e outro erro aleatorio sem base no codigo 
     public void cadastrarClienteDAO(Cliente cliente) {
     	
         String sql = "INSERT INTO clientes (nome, cpfcnpj) VALUES (?, ?);";

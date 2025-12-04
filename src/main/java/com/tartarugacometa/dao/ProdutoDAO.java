@@ -15,7 +15,7 @@ import com.tartarugacometa.model.Produto;
 public class ProdutoDAO {
 
 	private ConnectionFactory connectionFactory = new ConnectionFactory();
-	
+	 //lembrar de tratar as exception pra dar um erro de cada metodo e não um erro de runtime que e outro erro aleatorio sem base no codigo 
 	public void cadastrarProdutoDAO(Produto produto) {
 		
 		String sql = "INSERT INTO produtos (nome,peso,volume,valorfrete) VALUES (?,?,?,?);";
