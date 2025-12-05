@@ -20,15 +20,34 @@ public class ClienteDAO {
 
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getCpfCnpj());
+            clienteLetraCpfCnpj(cliente);
             
             ps.execute();
 			ps.close();
 			conn.close();
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
         }
         
+    }
+    //testando formas de exceptions apenas teste, isso n vai se manter nessa parte do codigo
+    public static void clienteErroVazio(Cliente cliente) {
+    	
+    	if(cliente.getCpfCnpj().isEmpty() || cliente.getCpfCnpj().equals(" ")) {
+    		throw new IllegalArgumentException("CPF está vazio. ");
+    	}
+    	
+    }
+    
+    public static void clienteLetraCpfCnpj(Cliente cliente) {
+    	
+    	boolean l = cliente.getCpfCnpj().matches("[a-zA-Z]+"); 
+    	
+    	if(cliente.getCpfCnpj().equals(l)) {
+    		throw new IllegalArgumentException("CPF não pode conter letras. ");
+    	}
+    	
     }
 
     public void atualizarClienteDAO(Cliente cliente) {

@@ -10,7 +10,7 @@ public class ClienteController {
     private Scanner sc = new Scanner(System.in);
     private ClienteBO clienteBo = new ClienteBO();
 
-    public void cadastrarClienteBO() {
+    public void cadastrarClienteController() {
     	
         System.out.println("Digite o nome: ");
         String nome = sc.nextLine();

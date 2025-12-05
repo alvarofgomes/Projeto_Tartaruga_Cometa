@@ -21,9 +21,9 @@ public class Main {
 		//Cliente c = (Cliente)cc.atualizarDadosDoCliente();
 		//cc.excluirContaDoCliente();
 		
-		//cc.listarClientesController();
+		cc.excluirClienteController();
 		//ec.listarEnderecosController();
-		pc.listarProdutosController();
+		//pc.listarProdutosController();
 		
 		/*
 		 
