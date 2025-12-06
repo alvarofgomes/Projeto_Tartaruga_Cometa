@@ -1,13 +1,11 @@
 package com.tartarugacometa.model;
 
-import java.util.List;
-
 public class Entrega {
 
+	private int id;
 	private String status;
 	private double frete;
-	//lembrar de ajustar para varios produtos
-	private List<Produto> produtos;
+	private Cliente cliente;
 	
 	public Entrega(double frete) {
 		this.frete = frete;
@@ -30,6 +28,22 @@ public class Entrega {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	
 }

@@ -17,13 +17,13 @@ public class Main {
 		ClienteController cc = new ClienteController();
 		EnderecoController ec = new EnderecoController();
 		ProdutoController pc = new ProdutoController();
+		EntregaController enc = new EntregaController();
 		
-		//Cliente c = (Cliente)cc.atualizarDadosDoCliente();
 		//cc.excluirContaDoCliente();
-		
-		cc.excluirClienteController();
+		//cc.listarClientesController();
 		//ec.listarEnderecosController();
 		//pc.listarProdutosController();
+		enc.listarEntregaController();
 		
 		/*
 		 

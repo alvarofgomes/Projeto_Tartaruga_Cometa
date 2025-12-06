@@ -20,7 +20,6 @@ public class ClienteDAO {
 
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getCpfCnpj());
-            clienteLetraCpfCnpj(cliente);
             
             ps.execute();
 			ps.close();
@@ -31,7 +30,8 @@ public class ClienteDAO {
         }
         
     }
-    //testando formas de exceptions apenas teste, isso n vai se manter nessa parte do codigo
+    
+    /*testando formas de exceptions apenas teste, isso n vai se manter nessa parte do codigo
     public static void clienteErroVazio(Cliente cliente) {
     	
     	if(cliente.getCpfCnpj().isEmpty() || cliente.getCpfCnpj().equals(" ")) {
@@ -48,7 +48,7 @@ public class ClienteDAO {
     		throw new IllegalArgumentException("CPF não pode conter letras. ");
     	}
     	
-    }
+    }*/
 
     public void atualizarClienteDAO(Cliente cliente) {
     	
