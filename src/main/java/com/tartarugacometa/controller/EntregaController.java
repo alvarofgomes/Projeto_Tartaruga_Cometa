@@ -1,5 +1,6 @@
 package com.tartarugacometa.controller;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.tartarugacometa.BO.ClienteBO;
@@ -61,11 +62,13 @@ public class EntregaController {
 		
 	}
 	
-	public void listarEntregaController() {
+	public void listarEntregaPorClienteController(int id) {
 		
 		System.out.println("Listando Entregas: ");
-		entregaBo.listarEntregaBO()
-			.forEach(entrega -> 
+		
+		List<Entrega> entregas = entregaBo.listarEntregasPorClienteBO(id);
+		
+		entregas.forEach(entrega -> 
 					System.out.println(entrega.getId() + " - " + entrega.getStatus()));
 		
 	}

@@ -63,13 +63,14 @@ public class EntregaDAO {
         }
     }
 	
-    public List<Entrega> listarEntregasDAO() {
+    public List<Entrega> listarEntregasPorClienteDAO(int clienteId) {
         List<Entrega> entregas = new ArrayList<>();
-        String sql = "SELECT * FROM entregas;";
+        String sql = "SELECT * FROM entregas WHERE clientes_id = ?;";
 
         try (Connection conn = connection.recuperarConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
+            ps.setInt(1, clienteId);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -86,5 +87,6 @@ public class EntregaDAO {
             throw new RuntimeException(e);
         }
     }
+
     
 }

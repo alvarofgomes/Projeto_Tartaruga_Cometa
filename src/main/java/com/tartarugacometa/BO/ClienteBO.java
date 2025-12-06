@@ -2,6 +2,7 @@ package com.tartarugacometa.BO;
 
 import com.tartarugacometa.dao.ClienteDAO;
 import com.tartarugacometa.model.Cliente;
+import com.tartarugacometa.model.Entrega;
 
 import java.util.List;
 

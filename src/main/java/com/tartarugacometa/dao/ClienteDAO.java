@@ -1,6 +1,7 @@
 package com.tartarugacometa.dao;
 
 import com.tartarugacometa.model.Cliente;
+import com.tartarugacometa.model.Entrega;
 import com.conexaofactory.ConnectionFactory;
 
 import java.sql.*;
@@ -73,6 +74,20 @@ public class ClienteDAO {
 
     public void deletarClienteDAO(int id) {
     	
+        EntregaDAO entregaDAO = new EntregaDAO();
+        ItensEntregasDAO itensDAO = new ItensEntregasDAO();
+        
+        List<Entrega> entregas = entregaDAO.listarEntregasPorClienteDAO(id);
+    	
+        //deletar o de itens
+        for (Entrega entrega : entregas) {
+            itensDAO.deletarItensEntregaDAO(entrega.getId());
+        }
+        
+        for (Entrega entrega : entregas) {
+            entregaDAO.deletarEntregaDAO(entrega.getId());
+        }
+        
         String sql = "DELETE FROM clientes WHERE id_cliente = ?;";
 
         try (Connection conn = connectionFactory.recuperarConexao();

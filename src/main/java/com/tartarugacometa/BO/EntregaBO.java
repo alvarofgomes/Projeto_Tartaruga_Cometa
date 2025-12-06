@@ -21,8 +21,8 @@ public class EntregaBO {
     	entregaDAO.deletarEntregaDAO(id);
     }
 
-    public List<Entrega> listarEntregaBO() {
-        return entregaDAO.listarEntregasDAO();
+    public List<Entrega> listarEntregasPorClienteBO(int clienteId) {
+        return entregaDAO.listarEntregasPorClienteDAO(clienteId);
     }
-	
+
 }
