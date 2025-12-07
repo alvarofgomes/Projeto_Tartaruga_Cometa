@@ -1,6 +1,7 @@
 package com.tartarugacometa.controller;
 
 import com.tartarugacometa.BO.ClienteBO;
+import com.tartarugacometa.exceptions.ValidacaoException;
 import com.tartarugacometa.model.Cliente;
 
 import java.util.Scanner;
@@ -12,13 +13,21 @@ public class ClienteController {
 
     public void cadastrarClienteController() {
     	
-        System.out.println("Digite o nome: ");
-        String nome = sc.nextLine();
-        System.out.println("Digite CPF/CNPJ: ");
-        String cpfcnpj = sc.nextLine();
-        Cliente cliente = new Cliente(nome, cpfcnpj);
-        clienteBo.cadastrarClienteBO(cliente);
-        System.out.println("Cliente cadastrado!");
+    	try {
+			
+            System.out.println("Digite o nome: ");
+            String nome = sc.nextLine();
+            System.out.println("Digite CPF/CNPJ: ");
+            String cpfcnpj = sc.nextLine();
+            Cliente cliente = new Cliente(nome, cpfcnpj);
+            clienteBo.cadastrarClienteBO(cliente);
+            System.out.println("Cliente cadastrado!");
+    		
+		} catch (ValidacaoException  e) {
+			System.out.println("Erro de validação: " + e.getMessage());
+		}catch(Exception e) {
+			System.out.println("Erro inesperado: " + e.getMessage());
+		}
         
     }
 
