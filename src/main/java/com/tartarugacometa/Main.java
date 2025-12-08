@@ -19,10 +19,10 @@ public class Main {
 		ProdutoController pc = new ProdutoController();
 		EntregaController enc = new EntregaController();
 		
-		cc.cadastrarClienteController();
-		//ec.listarEnderecosController();
-		//pc.listarProdutosController();
-		//enc.listarEntregaController();
+		//cc.cadastrarClienteController();
+		//ec.cadastrarEnderecoController();
+		//pc.cadastrarDadosDoProduto();
+		//enc.cadastrarEntregaController();
 		
 		/*
 		 

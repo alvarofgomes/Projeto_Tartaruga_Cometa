@@ -3,6 +3,7 @@ package com.tartarugacometa.controller;
 import java.util.Scanner;
 
 import com.tartarugacometa.BO.ProdutoBO;
+import com.tartarugacometa.exceptions.ValidacaoException;
 import com.tartarugacometa.model.Produto;
 
 public class ProdutoController {
@@ -12,56 +13,84 @@ public class ProdutoController {
 	
 	public void cadastrarDadosDoProduto() {
 		
-		System.out.println("Digite o nome do do produto: ");
-		String nomeDoProduto = sc.nextLine();
-		System.out.println("Digite o peso do produto: ");
-		double peso = sc.nextDouble();
-		System.out.println("Digite o volume do produto: ");
-		double volumeDoProduto = sc.nextDouble();
-		System.out.println("Digite o valor do produto: ");
-		double valorDoProduto = sc.nextDouble();
-		Produto produto = new Produto(nomeDoProduto,peso,volumeDoProduto,valorDoProduto);
-		produtoBo.cadastrarProdutoBO(produto);
-		System.out.println("Produto cadastrado!");
-		//this.produto = new Produto(n,c,vp,v);
+		try {
+			
+			System.out.println("Digite o nome do do produto: ");
+			String nomeDoProduto = sc.nextLine();
+			System.out.println("Digite o peso do produto: ");
+			double peso = sc.nextDouble();
+			System.out.println("Digite o volume do produto: ");
+			double volumeDoProduto = sc.nextDouble();
+			System.out.println("Digite o valor do produto: ");
+			double valorDoProduto = sc.nextDouble();
+			Produto produto = new Produto(nomeDoProduto,peso,volumeDoProduto,valorDoProduto);
+			produtoBo.cadastrarProdutoBO(produto);
+			System.out.println("Produto cadastrado!");
+			
+        } catch (ValidacaoException e) {
+            System.out.println("Erro de validação: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
+        }
 		
 	}
 	
 	public void atualizarDadosDoProduto() {
 		
-		Produto produto = new Produto();
-		
-		System.out.println("ID: ");
-		produto.setId(sc.nextInt());
-		sc.nextLine();
-		System.out.println("Novo nome: ");
-		produto.setNomeDoProduto(sc.nextLine());
-		System.out.println("Novo peso: ");
-		produto.setPeso(sc.nextDouble());
-		System.out.println("Novo volume: ");
-		produto.setVolume(sc.nextDouble());
-		System.out.println("Novo valor: ");
-		produto.setValor(sc.nextDouble());
-		produtoBo.atualizarProdutoBO(produto);
-		System.out.println("Produto atualizado!");
+		try {
+			
+			Produto produto = new Produto();
+			
+			System.out.println("ID: ");
+			produto.setId(sc.nextInt());
+			sc.nextLine();
+			System.out.println("Novo nome: ");
+			produto.setNomeDoProduto(sc.nextLine());
+			System.out.println("Novo peso: ");
+			produto.setPeso(sc.nextDouble());
+			System.out.println("Novo volume: ");
+			produto.setVolume(sc.nextDouble());
+			System.out.println("Novo valor: ");
+			produto.setValor(sc.nextDouble());
+			produtoBo.atualizarProdutoBO(produto);
+			System.out.println("Produto atualizado!");
+			
+        } catch (ValidacaoException e) {
+            System.out.println("Erro de validação: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
+        }
 	}
 	
 	
 	public void excluirDadosDoProduto() {
 
-		System.out.println("Informe o ID:");
-		int id = sc.nextInt();
-		produtoBo.deletarProdutoBO(id);
-		System.out.println("Produto excluído!");
+		try {
+			
+			System.out.println("Informe o ID:");
+			int id = sc.nextInt();
+			produtoBo.deletarProdutoBO(id);
+			System.out.println("Produto excluído!");
+			
+		} catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
+        }
 		
 	}
 	
 	public void listarProdutosController() {
 		
-		System.out.println("Listando produtos cadastrados: ");
-		produtoBo.listarProdutoBO().forEach(produto -> {
-			System.out.println(produto.getNomeDoProduto());
-		});
+		try {
+			
+			System.out.println("Listando produtos cadastrados: ");
+			produtoBo.listarProdutoBO().forEach(produto -> {
+				System.out.println(produto.getNomeDoProduto());
+			});
+			
+		} catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
+        }
+		
 	}
 	
 	/*

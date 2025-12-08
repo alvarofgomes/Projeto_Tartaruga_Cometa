@@ -33,53 +33,75 @@ public class ClienteController {
 
     public void atualizarClienteController() {
     	
-        Cliente cliente = new Cliente();
-        System.out.println("ID: ");
-        cliente.setId(sc.nextInt());
-        sc.nextLine();
-        System.out.println("Novo nome: ");
-        cliente.setNome(sc.nextLine());
-        System.out.println("Novo CPF/CNPJ: ");
-        cliente.setCpfCnpj(sc.nextLine());
-        clienteBo.atualizarClienteBO(cliente);
-        System.out.println("Cliente atualizado!");
+    	try {
+    		
+            Cliente cliente = new Cliente();
+            System.out.println("ID: ");
+            cliente.setId(sc.nextInt());
+            sc.nextLine();
+            System.out.println("Novo nome: ");
+            cliente.setNome(sc.nextLine());
+            System.out.println("Novo CPF/CNPJ: ");
+            cliente.setCpfCnpj(sc.nextLine());
+            clienteBo.atualizarClienteBO(cliente);
+            System.out.println("Cliente atualizado!");
+            
+		} catch (ValidacaoException  e) {
+			System.out.println("Erro de validação: " + e.getMessage());
+		}catch(Exception e) {
+			System.out.println("Erro inesperado: " + e.getMessage());
+		}
         
     }
   
     public void excluirClienteController() {
     	
-        System.out.println("Informe o ID:");
-        int id = sc.nextInt();
-        clienteBo.deletarClienteBO(id);
-        System.out.println("Cliente excluído!");
+        try {
+            System.out.println("Informe o ID:");
+            int id = sc.nextInt();
+            sc.nextLine(); 
+            clienteBo.deletarClienteBO(id);
+            System.out.println("Cliente excluído!");
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
+        }
         
     }
     
     public void listarClientesController() {
     	
-        System.out.println("Listando clientes cadastrados: ");
-        clienteBo.listarClientesBO().forEach(cliente -> {
-            System.out.println(cliente.getNome());
-        });
-        
-    }
-    
-    public void buscarClientePorIdController() {
-    	
-        System.out.println("Informe o ID do cliente:");
-        int id = sc.nextInt();
+        try {
+        	
+	       System.out.println("Listando clientes cadastrados: ");
+	       clienteBo.listarClientesBO().forEach(cliente -> {
+	           System.out.println(cliente.getNome());
+	       });
 
-        Cliente cliente = clienteBo.buscarClientePorIdBO(id);
-
-        if (cliente != null) {
-            System.out.println("Cliente encontrado:");
-            System.out.println("ID: " + cliente.getId());
-            System.out.println("Nome: " + cliente.getNome());
-            System.out.println("CPF/CNPJ: " + cliente.getCpfCnpj());
-        } else {
-            System.out.println("Nenhum cliente encontrado com esse ID.");
+        } catch(Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
         }
         
+    }
+
+    public void buscarClientePorIdController() {
+        try {
+            System.out.println("Informe o ID do cliente:");
+            int id = sc.nextInt();
+            sc.nextLine();
+
+            Cliente cliente = clienteBo.buscarClientePorIdBO(id);
+
+            if (cliente != null) {
+                System.out.println("Cliente encontrado:");
+                System.out.println("ID: " + cliente.getId());
+                System.out.println("Nome: " + cliente.getNome());
+                System.out.println("CPF/CNPJ: " + cliente.getCpfCnpj());
+            } else {
+                System.out.println("Nenhum cliente encontrado com esse ID.");
+            }
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
+        }
     }
     
 }

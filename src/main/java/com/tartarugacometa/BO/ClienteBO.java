@@ -32,19 +32,17 @@ public class ClienteBO {
         return clienteDAO.buscarClientePorIdDAO(id);
     }
  
-    private void validarCliente(Cliente cliente) {
-
-        if (cliente.getNome() == null || cliente.getNome().isBlank()) {
-            throw new ValidacaoException("O nome do cliente não pode ser vazio.");
+    public void validarCliente(Cliente cliente) {
+        if (cliente.getNome() == null || cliente.getNome().trim().isEmpty()) {
+            throw new ValidacaoException("O nome do cliente não pode estar vazio.");
         }
 
-        if (cliente.getCpfCnpj() == null || cliente.getCpfCnpj().isBlank()) {
-            throw new ValidacaoException("O CPF/CNPJ não pode ser vazio.");
+        if (cliente.getCpfCnpj() == null || cliente.getCpfCnpj().trim().isEmpty()) {
+            throw new ValidacaoException("CPF/CNPJ não pode estar vazio.");
         }
 
         if (!cliente.getCpfCnpj().matches("\\d+")) {
-            throw new ValidacaoException("O CPF/CNPJ só pode conter números.");
+            throw new ValidacaoException("CPF/CNPJ deve conter apenas números.");
         }
     }
-    
 }
